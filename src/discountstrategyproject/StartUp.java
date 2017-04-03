@@ -22,7 +22,7 @@ public class StartUp {
         
         PosTerminal pos = new PosTerminal(display1,display2);
         pos.startSale("500", data, "Kohls");
-        pos.addItemToSale("A101", 1);
+        pos.addItemToSale ("A101", 1);
         pos.addItemToSale("B205", 2);
         pos.addItemToSale("C222", 3);
         pos.endSale();
