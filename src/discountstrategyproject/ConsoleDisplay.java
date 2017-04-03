@@ -12,8 +12,12 @@ package discountstrategyproject;
 public class ConsoleDisplay implements DisplayStrategy {
 
     @Override
-    public void print(String receipt) {
-        System.out.println(receipt);
+    public final void print(String receipt)throws IllegalArgumentException {
+        if(receipt == null || receipt.isEmpty()){
+            throw new IllegalArgumentException("Report can not be print without data.");
+        }else{
+            System.out.println(receipt);
+        }
     }
     
 }

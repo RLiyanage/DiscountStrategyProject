@@ -15,8 +15,8 @@ class LineItem {
     private double qty;
 
     public LineItem(String productId, double qty, ReceiptDataAccessStrategy data) {
-        product = searchProduct(productId, data);
-        this.qty = qty;
+        setProduct(searchProduct(productId, data));
+        setQty(qty);
     }
 
     private Product searchProduct(String productId, ReceiptDataAccessStrategy data) {
@@ -29,24 +29,28 @@ class LineItem {
 
    
 
-    public double getQty() {
+    public final double getQty() {
         return qty;
     }
 
-    public final void setQty(double qty) {
+    public final void setQty(double qty) throws IllegalArgumentException{
+        if (qty < 0.0){
+           throw new IllegalArgumentException("Quantity can not be negative number."); 
+        }
         this.qty = qty;
     }
 
-    public String getLineItemData() {
-        String data = "";
-        data += product.getProductId()+"\t";
-        data +=product.getProductName()+"t";
-        data+= product.getPrice()+"\t";
-        data+= this.qty;
-        data+=calculateSubTotal();
-        
-        data+=product.getDiscount().calculateDiscountAmount(qty, product.getPrice());
-        return data;
+    public final Product getProduct() {
+        return product;
     }
+
+    public final void setProduct(Product product)throws IllegalArgumentException {
+        if(product == null){
+         throw new IllegalArgumentException("Product can not be null."); 
+ 
+        }
+        this.product = product;
+    }
+
     
 }

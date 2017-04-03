@@ -21,10 +21,10 @@ public class StartUp {
         ReceiptDataAccessStrategy data = new InMemoryDataAccess();
         
         PosTerminal pos = new PosTerminal(display1,display2);
-        pos.startSale("200", data, "Kohls");
-        pos.addItemToSale("A101", 1.0);
-        pos.addItemToSale("B205", 2.0);
+        pos.startSale("500", data, "Kohls");
+        pos.addItemToSale("A101", 1);
+        pos.addItemToSale("B205", 2);
+        pos.addItemToSale("C222", 3);
         pos.endSale();
     }
-
 }

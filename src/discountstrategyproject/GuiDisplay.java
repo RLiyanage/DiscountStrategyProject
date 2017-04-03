@@ -14,7 +14,10 @@ import javax.swing.JOptionPane;
 public class GuiDisplay implements DisplayStrategy{
 
     @Override
-    public void print(String receipt) {
+    public final void print(String receipt)throws IllegalArgumentException {
+        if(receipt == null|| receipt.isEmpty()){
+            throw new IllegalArgumentException();
+        }
         JOptionPane.showMessageDialog(null,receipt);
     }
     

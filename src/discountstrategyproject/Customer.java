@@ -17,19 +17,25 @@ private String customerName;
       setCustomerName(customerName);
     }
 
-    public String getCustomerId() {
+    public final String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public final void setCustomerId(String customerId)throws IllegalArgumentException {
+        if (customerId == null|| customerId.isEmpty()){
+            throw new IllegalArgumentException("CustomerId ir required.");
+        }
         this.customerId = customerId;
     }
 
-    public String getCustomerName() {
+    public final String getCustomerName() {
         return customerName;
     }
 
-    public void setCustomerName(String customerName) {
+    public final void setCustomerName(String customerName)throws IllegalArgumentException {
+        if(customerName == null || customerName.isEmpty()) {  
+            throw new IllegalArgumentException("Customer Name is required.");
+        }
         this.customerName = customerName;
     }
 

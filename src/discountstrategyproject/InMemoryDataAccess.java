@@ -23,8 +23,13 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
         new Product("C222", "Women's Socks    ", 9.50, new NoDiscount())
     };
 
+    /**
+     *
+     * @param custId
+     * @return
+     */
     @Override
-    public final Customer searchCustomer(final String custId) {
+    public final Customer searchCustomer(String custId) {
         // validation is needed for method parameter
         if (custId == null || custId.length() == 0) {
             System.out.println("Sorry, FakeDatabase.findCustomer method has "

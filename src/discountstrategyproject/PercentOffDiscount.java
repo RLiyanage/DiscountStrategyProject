@@ -9,30 +9,27 @@ package discountstrategyproject;
  *
  * @author Sanuth
  */
-public class PercentOffDiscount implements DiscountStrategy{
+public class PercentOffDiscount implements DiscountStrategy {
+
     private double discountPercentage;
-    
-    
 
     public PercentOffDiscount(double discountPer) {
         setDiscountPercentage(discountPer);
     }
-    
-    
 
-    public double getDiscountPercentage() {
+    public final double getDiscountPercentage() {
         return discountPercentage;
     }
 
-    public void setDiscountPercentage(double discountPercentage) {
-        this.discountPercentage = discountPercentage;
+    public final void setDiscountPercentage(double discountPercentage) {
+        if (discountPercentage > 0) {
+            this.discountPercentage = discountPercentage;
+        }
     }
 
     @Override
-    public double calculateDiscountAmount(double qty,double price) {
-        return qty *price * discountPercentage;
+    public final double calculateDiscountAmount(double qty, double price) {
+        return qty * price * discountPercentage;
     }
 
-    
-    
 }
