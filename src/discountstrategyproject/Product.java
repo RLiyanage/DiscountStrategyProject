@@ -10,11 +10,17 @@ package discountstrategyproject;
  * @author Sanuth
  */
 public class Product {
-
+   
     private String productId;
     private String productName;
     private double price;
     private DiscountStrategy discount;
+    
+     Product(){
+        
+    }
+    
+    
 
     Product(String productId, String productName, double price, DiscountStrategy discount) {
         this.productId = productId;
@@ -27,7 +33,10 @@ public class Product {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(String poductId) {
+         if(poductId == null || poductId.isEmpty() ){
+        throw new IllegalArgumentException();
+        }
         this.productId = productId;
     }
 
@@ -36,6 +45,9 @@ public class Product {
     }
 
     public void setProductName(String productName) {
+        if(productName == null || productName.isEmpty() ){
+        throw new IllegalArgumentException();
+        }
         this.productName = productName;
     }
 
@@ -44,6 +56,10 @@ public class Product {
     }
 
     public void setPrice(double price) {
+        
+         if(price < 1 || price > 2000 ) {
+            throw new IllegalArgumentException();
+        }
         this.price = price;
     }
 
@@ -53,10 +69,16 @@ public class Product {
     
     // optional
     public double getDiscountAmt(int qty) {
+         if(qty < 1  ) {
+            throw new IllegalArgumentException();
+        }
         return discount.calculateDiscountAmount(qty, price);
     }
 
     public void setDiscount(DiscountStrategy discount) {
+         if(discount == null){
+        throw new NullPointerException();
+        }
         this.discount = discount;
     }
 

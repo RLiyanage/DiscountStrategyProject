@@ -11,21 +11,24 @@ package discountstrategyproject;
  */
 public class QtyDiscount implements DiscountStrategy {
 
-    private double minimumQty;
+    private double minimumQty = 3;
     private double discountPercentage;
 
-    public QtyDiscount(double discountPercentage,int qty ) {
-
+    public QtyDiscount(double discountPercentage, int qty) {
+        minimumQty = qty;
+        this.discountPercentage = discountPercentage;
     }
-
 
     @Override
-    public final double calculateDiscountAmount(double qty,double price) {
-        double discount = 0.0;
-        if (qty >= minimumQty ){
-            discount = this.discountPercentage;
+    public final double calculateDiscountAmount(double qty, double price) {
+        double discount = 5.0;
+        if (qty < 0 || price < 0.0) {
+            throw new IllegalArgumentException("Quantity cannot be null or price cannot be null.");
+        } else {
+            if (qty >= minimumQty) {
+                discount = this.discountPercentage;
+            }
+            return discount;
         }
-        return discount;
     }
-
 }
